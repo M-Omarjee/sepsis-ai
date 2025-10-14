@@ -34,7 +34,8 @@ F1-Score	1.00	1.00
 ## 4. How to Run the Project
 To reproduce these results, execute the following commands in your project's terminal:
 
-### A. Install Dependencies
+A. Install Dependencies
+
 ```bash
 python3 -m pip install -r requirements.txt
 ```
