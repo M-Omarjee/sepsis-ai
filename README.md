@@ -37,10 +37,14 @@ To reproduce these results, execute the following commands in your project's ter
 ### A. Install Dependencies
 ```bash
 python3 -m pip install -r requirements.txt
+```
+
 B. Execute the Model
 
-Bash
+```bash
 python3 model_script.py
+```
+
 5. Next Steps
 Future iterations of this work should focus on integrating this model with a much larger, anonymized clinical dataset to validate its robustness and generalizability in a real-world setting.
 
