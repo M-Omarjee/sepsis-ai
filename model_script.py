@@ -1,8 +1,8 @@
 # ----------------------------------------------------------------------------------
-# Phase 2: Building a Basic Sepsis Prediction Model
+# Building a Basic Sepsis Prediction Model
 # ----------------------------------------------------------------------------------
 
-# 1. IMPORTS: These lines load the toolkits we just installed.
+# 1. IMPORTS: Load toolkits
 import pandas as pd              # Used for handling data tables (like our CSV file).
 from sklearn.model_selection import train_test_split # Tool to split data into training/testing sets.
 from sklearn.linear_model import LogisticRegression    # The simple AI model we will use first.
@@ -10,9 +10,8 @@ from sklearn.metrics import accuracy_score, classification_report # Tools to mea
 
 print("Toolkits loaded successfully!")
 
-# 2. DATA LOADING: Load our simulated patient data using the 'pandas' library.
+# 2. DATA LOADING: Load simulated patient data using the 'pandas' library.
 try:
-    # pd.read_csv reads the data file into a structure called a DataFrame (df).
     df = pd.read_csv('mock_sepsis_data.csv')
     print("Data loaded successfully! Head of data (first 5 rows):")
     # This line prints the top 5 rows so we can inspect the data structure.
@@ -21,12 +20,10 @@ except FileNotFoundError:
     print("Error: The file 'mock_sepsis_data.csv' was not found. Make sure it's in the same folder!")
     exit()
 
-# Now, save the file (Command + S).
-
 # 3. DATA PREPARATION: Define inputs (features) and output (target).
 
 # X (Features) contains the vital signs used to predict sepsis onset.
-# We drop Patient_ID (not useful) and Sepsis_Onset (the answer).
+#  Drop Patient_ID (not useful) and Sepsis_Onset (the answer).
 X = df.drop(['Patient_ID', 'Sepsis_Onset'], axis=1)
 
 # y (Target) contains the answer the model must learn to predict (0=No Sepsis, 1=Sepsis).
@@ -38,7 +35,7 @@ print("\nTarget (y) ready for training. First 5 patients' sepsis outcome:")
 print(y.head())
 
 # 4. SPLIT DATA: Divide the data into a Training set (for learning) and a Test set (for evaluation).
-# We use 80% for training and 20% for testing (test_size=0.2).
+# Using 80% for training and 20% for testing (test_size=0.2).
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, 
     test_size=0.2, 
