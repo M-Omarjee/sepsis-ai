@@ -52,4 +52,4 @@ Future iterations of this work should focus on integrating this model with a muc
 
 ### ⚠️ DISCLAIMER: Educational Use Only
 
-THIS IS NOT A CLINICAL DIAGNOSTIC TOOL. This project is developed purely for educational and portfolio purposes using simulated data. 
+<p align="center">THIS IS NOT A CLINICAL DIAGNOSTIC TOOL. This project is developed purely for educational and portfolio purposes using simulated data.</p>
