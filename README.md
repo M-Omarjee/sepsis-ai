@@ -50,6 +50,6 @@ python3 model_script.py
 
 Future iterations of this work should focus on integrating this model with a much larger, anonymized clinical dataset to validate its robustness and generalizability in a real-world setting.
 
-## ⚠️ DISCLAIMER: Educational Use Only
+### ⚠️ DISCLAIMER: Educational Use Only
 
 THIS IS NOT A CLINICAL DIAGNOSTIC TOOL. This project is developed purely for educational and portfolio purposes using simulated data. The results, including the 100% accuracy, are based on a small, clean mock dataset and are not representative of real-world clinical performance. Do not use this model or its outputs for actual patient care or medical diagnosis.
