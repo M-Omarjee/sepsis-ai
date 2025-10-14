@@ -1,4 +1,4 @@
-# 🇬🇧 UK Sepsis Early Detection Model: A NEWS2-Based ML Approach
+# UK Sepsis Early Detection Model: A NEWS2-Based ML Approach
 
 ## 1. Project Overview and Clinical Context
 This project presents a foundational Machine Learning model designed to predict the early onset of sepsis using key physiological parameters derived from the UK's **National Early Warning Score (NEWS2)** system.
