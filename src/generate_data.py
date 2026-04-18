@@ -129,11 +129,15 @@ def generate_sepsis_cohort(
     lactate_mean = 0.8 + severity * 3.5
     lactate = (lactate_mean * np.exp(rng.normal(0, 0.35, n_patients))).clip(0.3, 15.0).round(1)
 
-    crp = np.where(
-        labels == 1,
-        15 + severity * 200 + rng.normal(0, 40, n_patients),
-        5 + severity * 30 + rng.normal(0, 10, n_patients),
-    ).clip(0.5, 500).round(1)
+    # CRP — driven by severity (like every other lab), not directly by label.
+    # Sepsis patients still tend to have higher CRP on average because sepsis
+    # correlates with higher severity — but there is meaningful overlap:
+    # some septic patients present with near-normal CRP (early sepsis,
+    # immunocompromised), and some non-septic patients have raised CRP
+    # (post-operative, inflammatory conditions, malignancy).
+    crp_base = 5 + severity * 80
+    crp_noise = rng.lognormal(mean=0, sigma=0.6, size=n_patients)
+    crp = (crp_base * crp_noise).clip(0.5, 500).round(1)
 
     on_oxygen = (rng.random(n_patients) < (0.1 + severity * 0.6)).astype(int)
 
