@@ -10,7 +10,7 @@
 
 A reproducible benchmark comparing the NHS-standard **NEWS2 early warning score** against machine learning models for sepsis detection, with proper clinical evaluation (bootstrap CIs, decision curve analysis, and subgroup audits).
 
-Built by a foundation doctor asking: *"Does ML actually beat the score we already use — and if so, where?"*
+Built by a resident doctor asking: *"Does ML actually beat the score we already use — and if so, where?"*
 
 > ⚠️ **Disclaimer:** This project uses synthetic data for educational and portfolio purposes. It is **not** a validated clinical decision-support tool.
 
