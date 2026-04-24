@@ -205,7 +205,7 @@ jupyter notebook notebooks/sepsis_detection.ipynb
 ## Author
 
 **Dr Muhammed Omarjee**
-Foundation Doctor (MBBS, King's College London 2023)
+Resident Doctor (MBBS, King's College London 2023)
 Exploring the intersection of clinical medicine and applied machine learning for NHS frontline workflows.
 
 ---
