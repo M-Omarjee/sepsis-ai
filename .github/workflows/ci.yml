@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Smoke test — data loads
+        run: |
+          python -c "
+          import pandas as pd
+          df = pd.read_csv('data/raw/sepsis_cohort.csv')
+          assert df.shape[0] == 2000, f'Expected 2000 rows, got {df.shape[0]}'
+          assert 0.15 < df.sepsis_onset.mean() < 0.25, 'Sepsis prevalence out of expected range'
+          print(f'Data OK: shape={df.shape}, prevalence={df.sepsis_onset.mean():.1%}')
+          "
+
+      - name: Smoke test — NEWS2 baseline module
+        run: |
+          python -c "
+          import sys
+          sys.path.insert(0, 'src')
+          import numpy as np
+          from news2_baseline import NEWS2Baseline
+
+          # Synthetic tiny dataset just to exercise the class
+          rng = np.random.default_rng(0)
+          scores = rng.integers(0, 12, size=200)
+          labels = (scores > 5).astype(int)
+
+          baseline = NEWS2Baseline(calibrate=True)
+          baseline.fit(scores, labels)
+          probs = baseline.predict_proba(scores)
+          preds = baseline.predict(scores)
+
+          assert probs.shape == (200, 2), f'Expected (200, 2), got {probs.shape}'
+          assert preds.shape == (200,), f'Expected (200,), got {preds.shape}'
+          assert (probs >= 0).all() and (probs <= 1).all(), 'Probabilities out of [0, 1]'
+          print('NEWS2Baseline module OK')
+          "
+
+      - name: Smoke test — data generator
+        run: |
+          python -c "
+          import sys
+          sys.path.insert(0, 'src')
+          from generate_data import generate_sepsis_cohort
+          df = generate_sepsis_cohort(n_patients=100, seed=0)
+          assert len(df) == 100
+          assert 'sepsis_onset' in df.columns
+          print(f'Generator OK: {len(df)} rows, {len(df.columns)} cols')
+          "
