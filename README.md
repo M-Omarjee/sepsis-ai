@@ -1,8 +1,12 @@
 # Sepsis Early Detection — NEWS2 vs Machine Learning
 
+<div align="center">
+
 [![CI](https://github.com/M-Omarjee/sepsis-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/M-Omarjee/sepsis-ai/actions/workflows/ci.yml)
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+</div>
 
 A reproducible benchmark comparing the NHS-standard **NEWS2 early warning score** against machine learning models for sepsis detection, with proper clinical evaluation (bootstrap CIs, decision curve analysis, and subgroup audits).
 
