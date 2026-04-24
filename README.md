@@ -126,6 +126,7 @@ python src/generate_data.py --seed 42
 
 ## Project Structure
 
+```
 sepsis-ai/
 ├── notebooks/
 │   └── sepsis_detection.ipynb   # Full analysis: EDA → modelling → subgroup audit
@@ -137,6 +138,7 @@ sepsis-ai/
 ├── models/                      # Serialised best model (.joblib)
 ├── requirements.txt             # Pinned dependencies
 └── README.md
+```
 
 ---
 
